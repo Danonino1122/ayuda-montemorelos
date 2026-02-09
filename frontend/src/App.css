@@ -1,0 +1,1325 @@
+/* ============================================
+   NAVEGACIÓN SUPERIOR
+   ============================================ */
+
+.navbar {
+    background-color: #ffffff;
+    padding: 0 2rem;
+    display: flex;                  /* Coloca los elementos en fila */
+    justify-content: space-between; /* Espacio entre logo y links */
+    align-items: center;            /* Centra verticalmente */
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);  /* Sombra sutil */
+    position: sticky;               /* Se queda fija arriba al hacer scroll */
+    top: 0;
+    z-index: 1000;                  /* Siempre encima de otros elementos */
+}
+
+.navbar-logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d6a4f;                 /* Verde oscuro */
+    text-decoration: none;
+}
+
+.navbar-logo span {
+    color: #40916c;                 /* Verde más claro para "Montemorelos" */
+}
+
+.navbar-links {
+    display: flex;
+    gap: 0.5rem;                    /* Espacio entre cada link */
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #555;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;           /* Animación suave al pasar el mouse */
+}
+
+.navbar-links a:hover {
+    background-color: #d8f3dc;      /* Verde claro al pasar mouse */
+    color: #2d6a4f;
+}
+
+/* ============================================
+   FORMULARIOS (Login, Registro) - Diseño dos columnas
+   ============================================ */
+
+.auth-page {
+    display: flex;
+    min-height: calc(100vh - 70px);
+}
+
+/* Lado izquierdo: Información del proyecto */
+.auth-info {
+    flex: 1;                           /* Ocupa la mitad */
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-info h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.auth-info h1 span {
+    color: #95d5b2;                    /* Verde claro para resaltar */
+}
+
+.auth-info p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.auth-features {
+    list-style: none;
+    padding: 0;
+}
+
+.auth-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Lado derecho: Formulario */
+.auth-form {
+    flex: 1;                           /* Ocupa la otra mitad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f0f2f5;
+}
+
+.form-card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 440px;
+}
+
+.form-card h1 {
+    font-size: 1.8rem;
+    color: #2d6a4f;
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+.form-card h2 {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.form-card input:focus {
+    border-color: #40916c;
+}
+
+.form-card input::placeholder {
+    color: #aaa;
+}
+
+.form-card select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background-color: white;
+    color: #1a1a2e;
+    transition: border-color 0.2s;
+}
+
+.form-card select:focus {
+    border-color: #40916c;
+}
+
+.form-card button {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.5rem;
+}
+
+.form-card button:hover {
+    background-color: #1b4332;
+}
+
+.form-card .mensaje-exito {
+    color: #2d6a4f;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.form-card .mensaje-error {
+    color: #d32f2f;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.form-card .form-link {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.form-card .form-link a {
+    color: #2d6a4f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-card .form-link a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   PÁGINA DEL MAPA
+   ============================================ */
+
+.mapa-container {
+    padding: 1.5rem 2rem;
+}
+
+.mapa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.mapa-header h1 {
+    font-size: 1.6rem;
+    color: #2d6a4f;
+}
+
+.mapa-header p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.mapa-wrapper {
+    border-radius: 16px;
+    overflow: hidden;                /* Las esquinas del mapa se redondean */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del popup del mapa */
+.popup-content h3 {
+    color: #2d6a4f;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+.popup-content p {
+    color: #555;
+    font-size: 0.85rem;
+    margin: 0.2rem 0;
+}
+
+.popup-content .estado-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+}
+
+.estado-abierta {
+    background-color: #d8f3dc;
+    color: #2d6a4f;
+}
+
+.estado-en_proceso {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.estado-completada {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+/* ============================================
+   PÁGINA CREAR NECESIDAD (con mapa)
+   ============================================ */
+
+.necesidad-container {
+    padding: 1.5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;                 /* Centra el contenido */
+}
+
+.necesidad-container h1 {
+    font-size: 1.6rem;
+    color: #2d6a4f;
+    margin-bottom: 0.3rem;
+}
+
+.necesidad-container > p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.necesidad-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.necesidad-form input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.necesidad-form input:focus {
+    border-color: #40916c;
+}
+
+.necesidad-form input::placeholder {
+    color: #aaa;
+}
+
+.necesidad-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.mapa-selector {
+    margin: 1rem 0;
+}
+
+.mapa-selector p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.ubicacion-info {
+    background-color: #d8f3dc;
+    color: #2d6a4f;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.necesidad-form button {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.necesidad-form button:hover {
+    background-color: #1b4332;
+}
+
+.btn-ayudar{
+      width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.8rem;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-ayudar:hover{
+    background-color:#1b4332 ;
+}
+
+/* ============================================
+   LANDING PAGE (HOME)
+   ============================================ */
+
+.home-container {
+    width: 100%;
+}
+
+/* HERO - Sección principal */
+.hero {
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: #95d5b2;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: white;
+    color: #2d6a4f;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid white;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ESTADISTICAS */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 3rem 2rem;
+    background-color: white;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d6a4f;
+}
+
+.stat-label {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* COMO FUNCIONA */
+.como-funciona {
+    padding: 4rem 2rem;
+    background-color: #f0f2f5;
+    text-align: center;
+}
+
+.como-funciona h2 {
+    font-size: 1.8rem;
+    color: #2d6a4f;
+    margin-bottom: 2.5rem;
+}
+
+.pasos {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.paso {
+    flex: 1;
+    max-width: 250px;
+    padding: 1.5rem;
+    border-radius: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.paso:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.paso-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Colores diferentes para cada paso */
+.paso:nth-child(1) .paso-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.paso:nth-child(2) .paso-icon {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+.paso:nth-child(3) .paso-icon {
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    color: white;
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+
+.paso h3 {
+    color: #2d6a4f;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.paso p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* FOOTER */
+.home-footer {
+    background-color: #1b4332;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   PANEL DE PADRINO
+   ============================================ */
+
+.panel-container {
+    padding: 1.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header h1 {
+    font-size: 1.6rem;
+    color: #2d6a4f;
+    margin-bottom: 0.2rem;
+}
+
+.panel-header p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.panel-stats .stat-badge {
+    background-color: #d8f3dc;
+    color: #2d6a4f;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.panel-vacio {
+    background-color: #f8f9fa;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 16px;
+    color: #888;
+}
+
+/* Lista de necesidades */
+.necesidades-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.necesidad-card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.necesidad-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.necesidad-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.necesidad-header:hover {
+    background-color: #f8f9fa;
+}
+
+.necesidad-info h3 {
+    color: #1a1a2e;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.necesidad-categoria {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.necesidad-acciones {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.necesidad-acciones svg {
+    color: #888;
+    font-size: 1.2rem;
+}
+
+/* Detalle de necesidad expandida */
+.necesidad-detalle {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid #eee;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.necesidad-descripcion {
+    color: #555;
+    font-size: 0.95rem;
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.necesidad-direccion {
+    color: #888;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Sección de donantes */
+.donantes-seccion {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.donantes-seccion h4 {
+    color: #2d6a4f;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.sin-donantes, .cargando {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.donantes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.donante-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.donante-info h5 {
+    color: #1a1a2e;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.donante-mensaje {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.donante-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.donante-contacto a {
+    color: #2d6a4f;
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+}
+
+.donante-contacto a:hover {
+    color: #1b4332;
+    text-decoration: underline;
+}
+
+/* ============================================
+   BOTONES EDITAR/ELIMINAR EN PANEL
+   ============================================ */
+
+.necesidad-botones {
+    display: flex;
+    gap: 0.8rem;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.btn-editar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-editar:hover {
+    background-color: #1b4332;
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #fff;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-eliminar:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FORMULARIO DE EDICIÓN
+   ============================================ */
+
+.formulario-edicion {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+.formulario-edicion label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.3rem;
+    margin-top: 0.8rem;
+}
+
+.formulario-edicion label:first-child {
+    margin-top: 0;
+}
+
+.formulario-edicion input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: white;
+}
+
+.formulario-edicion input:focus {
+    border-color: #40916c;
+}
+
+.formulario-edicion select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.formulario-edicion select:focus {
+    border-color: #40916c;
+}
+
+.botones-edicion {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+}
+
+.btn-guardar {
+    flex: 1;
+    padding: 0.7rem 1.5rem;
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-guardar:hover {
+    background-color: #1b4332;
+    transform: translateY(-2px);
+}
+
+.btn-cancelar {
+    flex: 1;
+    padding: 0.7rem 1.5rem;
+    background-color: #fff;
+    color: #666;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+}
+
+.ya-ayudaste {
+    color: #2d6a4f;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem;
+    background-color: #d8f3dc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: transparent;
+    color: #888;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #fee2e2;
+    color: #dc3545;
+}
+.mapa-filtros {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filtro-categoria {
+    padding: 0.6rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.filtro-categoria:focus {
+    border-color: #40916c;
+}
+
+.contador-necesidades {
+    background-color: #d8f3dc;
+    color: #2d6a4f;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.necesidad-form select {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    margin-bottom: 1rem;
+}
+
+.necesidad-form select:focus {
+    border-color: #40916c;
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.necesidad-form select:hover {
+    border-color: #40916c;
+
+}
+
+/* ============================================
+   FILTRO DE CATEGORÍAS (Mapa) - Mejorado
+   ============================================ */
+
+
+.mapa-filtros {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.filtro-categoria {
+    padding: 0.7rem 2.5rem 0.7rem 1rem;
+    border: 2px solid #2d6a4f;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    background-color: white;
+    color: #2d6a4f;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d6a4f' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+.filtro-categoria:focus {
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
+}
+
+.filtro-categoria:hover {
+    background-color: #d8f3dc;
+}
+
+.contador-necesidades {
+    background-color: #2d6a4f;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.dropdown-categoria {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-boton {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.dropdown-boton:hover {
+    border-color: #40916c;
+}
+
+.dropdown-boton.abierto {
+    border-color: #40916c;
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+    border-radius: 12px 12px 0 0;
+}
+
+.dropdown-texto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-placeholder {
+    color: #aaa;
+}
+
+.dropdown-emoji {
+    font-size: 1.1rem;
+}
+
+.dropdown-flecha {
+    color: #888;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+.dropdown-flecha.rotada {
+    transform: rotate(180deg);
+}
+
+.dropdown-lista {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 2px solid #40916c;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.2s ease-out;
+}
+
+.dropdown-opcion {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.15s;
+}
+
+.dropdown-opcion:hover {
+    background-color: #d8f3dc;
+}
+
+.dropdown-opcion.seleccionada {
+    background-color: #2d6a4f;
+    color: white;
+}
+
+.dropdown-opcion:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+/* Scrollbar personalizado para el dropdown */
+.dropdown-lista::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-lista::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.dropdown-lista::-webkit-scrollbar-thumb {
+    background: #40916c;
+    border-radius: 10px;
+}
+
+.necesidad-form {
+    overflow: visible;
+}
+
+/* Asegurar que el dropdown tenga z-index alto */
+.dropdown-categoria {
+    position: relative;
+    width: 100%;
+    z-index: 50;
+}
+
+.dropdown-lista {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 2px solid #039754;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.2s ease-out;
+}
+
+/* Fix para el contenedor del mapa */
+.mapa-container {
+    overflow: visible;
+}
+
+.mapa-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.mapa-wrapper .leaflet-container {
+    z-index: 1;
+}
+
+.mapa-header {
+    position: relative;
+    z-index:500;
+    background-color: white;
+    padding-bottom: 1rem;
+    overflow: visible;
+}
+
+.mapa-filtros {
+    position: relative;
+    z-index: 501;
+    overflow: visible;
+}
+
+.necesidad-form {
+    overflow: visible;
+}
+
+/* Asegurar que el dropdown tenga z-index alto */
+.dropdown-categoria {
+    position: relative;
+    width: 100%;
+    z-index: 502;
+}
+
+.dropdown-lista {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 2px solid #40916c;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.2s ease-out;
+    z-index: 9999;
+}
+
+/* Fix para el contenedor del mapa */
+.mapa-container {
+    overflow: visible;
+}
+.mapa-selector {
+    position: relative;
+    z-index: 1;
+}
+
+.mapa-selector .leaflet-container {
+    z-index: 1;
+}
+
+/* El dropdown en el formulario debe estar arriba */
+.necesidad-form .dropdown-categoria {
+    position: relative;
+    z-index: 100;
+}
+
+.necesidad-form .dropdown-lista {
+    z-index: 9999;
+}
+
