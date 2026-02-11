@@ -1101,6 +1101,12 @@
     gap: 0.5rem;
 }
 
+.dropdown-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dropdown-placeholder {
     color: #aaa;
 }
