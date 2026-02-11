@@ -1142,10 +1142,12 @@
     align-items: center;
     gap: 0.5rem;
     transition: all 0.15s;
+    color: #333;
 }
 
 .dropdown-opcion:hover {
-    background-color: #000000;
+    background-color: #d8f3dc;
+    color: #2d6a4f;
 }
 
 .dropdown-opcion.seleccionada {
