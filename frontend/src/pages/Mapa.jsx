@@ -77,7 +77,7 @@ function Mapa({usuario}) {
                 <MapContainer
                     center={[25.1872, -99.8275]}
                     zoom={13}
-                    style={{ height: "550px", width: "100%" }}
+                    style={{ height: "100px", width: "100%" }}
                 >
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

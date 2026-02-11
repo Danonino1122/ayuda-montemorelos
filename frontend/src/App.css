@@ -237,30 +237,44 @@
    ============================================ */
 
 .mapa-container {
-    padding: 1.5rem 2rem;
+    padding: 0;
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .mapa-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    padding: 1.5rem, 2rem;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    z-index: 500;
 }
 
 .mapa-header h1 {
     font-size: 1.6rem;
     color: #2d6a4f;
+    margin: 0;
 }
 
-.mapa-header p {
+.mapa-header > p > p {
     color: #888;
     font-size: 0.9rem;
+    margin: 0.2rem 0 0 0;
 }
 
 .mapa-wrapper {
-    border-radius: 16px;
-    overflow: hidden;                /* Las esquinas del mapa se redondean */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 160px);
+    position: relative;
+    z-index: 1;
+}
+
+.mapa-wrapper .leaflet-container {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 /* Estilos del popup del mapa */
@@ -1001,101 +1015,17 @@
     background-color: #fee2e2;
     color: #dc3545;
 }
-.mapa-filtros {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.filtro-categoria {
-    padding: 0.6rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    background-color: white;
-    cursor: pointer;
-    transition: border-color 0.2s;
-    outline: none;
-}
-
-.filtro-categoria:focus {
-    border-color: #40916c;
-}
-
-.contador-necesidades {
-    background-color: #d8f3dc;
-    color: #2d6a4f;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-.necesidad-form select {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    margin-bottom: 1rem;
-}
-
-.necesidad-form select:focus {
-    border-color: #40916c;
-    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
-}
-
-.necesidad-form select:hover {
-    border-color: #40916c;
-
-}
 
 /* ============================================
-   FILTRO DE CATEGORÍAS (Mapa) - Mejorado
+   FILTROS Y DROPDOWN DE CATEGORÍAS
    ============================================ */
-
 
 .mapa-filtros {
     display: flex;
     align-items: center;
     gap: 1rem;
-    
-}
-
-.filtro-categoria {
-    padding: 0.7rem 2.5rem 0.7rem 1rem;
-    border: 2px solid #2d6a4f;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    background-color: white;
-    color: #2d6a4f;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d6a4f' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-}
-
-.filtro-categoria:focus {
-    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.2);
-}
-
-.filtro-categoria:hover {
-    background-color: #d8f3dc;
+    position: relative;
+    z-index: 501;
 }
 
 .contador-necesidades {
@@ -1107,9 +1037,11 @@
     font-weight: 600;
 }
 
+/* Dropdown personalizado */
 .dropdown-categoria {
     position: relative;
     width: 100%;
+    z-index: 502;
 }
 
 .dropdown-boton {
@@ -1175,8 +1107,8 @@
     border-radius: 0 0 12px 12px;
     max-height: 250px;
     overflow-y: auto;
-    z-index: 100;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     animation: slideDown 0.2s ease-out;
 }
 
@@ -1217,93 +1149,11 @@
     border-radius: 10px;
 }
 
+/* Fix para que el dropdown no se corte */
 .necesidad-form {
     overflow: visible;
 }
 
-/* Asegurar que el dropdown tenga z-index alto */
-.dropdown-categoria {
-    position: relative;
-    width: 100%;
-    z-index: 50;
-}
-
-.dropdown-lista {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: 2px solid #039754;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    max-height: 250px;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    animation: slideDown 0.2s ease-out;
-}
-
-/* Fix para el contenedor del mapa */
-.mapa-container {
-    overflow: visible;
-}
-
-.mapa-wrapper {
-    position: relative;
-    z-index: 1;
-}
-
-.mapa-wrapper .leaflet-container {
-    z-index: 1;
-}
-
-.mapa-header {
-    position: relative;
-    z-index:500;
-    background-color: white;
-    padding-bottom: 1rem;
-    overflow: visible;
-}
-
-.mapa-filtros {
-    position: relative;
-    z-index: 501;
-    overflow: visible;
-}
-
-.necesidad-form {
-    overflow: visible;
-}
-
-/* Asegurar que el dropdown tenga z-index alto */
-.dropdown-categoria {
-    position: relative;
-    width: 100%;
-    z-index: 502;
-}
-
-.dropdown-lista {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: 2px solid #40916c;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    max-height: 250px;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    animation: slideDown 0.2s ease-out;
-    z-index: 9999;
-}
-
-/* Fix para el contenedor del mapa */
-.mapa-container {
-    overflow: visible;
-}
 .mapa-selector {
     position: relative;
     z-index: 1;
@@ -1313,13 +1163,10 @@
     z-index: 1;
 }
 
-/* El dropdown en el formulario debe estar arriba */
 .necesidad-form .dropdown-categoria {
-    position: relative;
     z-index: 100;
 }
 
 .necesidad-form .dropdown-lista {
     z-index: 9999;
 }
-
