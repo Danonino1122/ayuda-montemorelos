@@ -255,7 +255,7 @@
 
 .mapa-header h1 {
     font-size: 1.5rem;
-    color: white;
+    color: black;
     margin: 0;
     font-weight: 600;
 }
@@ -1035,10 +1035,19 @@
     border: none;
     border-radius: 25px;
     padding: 0.7rem 1rem;
+    color: #333;
 }
 
 .mapa-filtros .dropdown-boton:hover {
     background-color: white;
+}
+
+.mapa-filtros .dropdown-texto {
+    color: #333;
+}
+
+.mapa-filtros .dropdown-placeholder {
+    color: #888;
 }
 
 .contador-necesidades {
