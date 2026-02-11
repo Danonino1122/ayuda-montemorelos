@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { FiUsers, FiMapPin, FiPhone, FiMail, FiChevronDown, FiChevronUp, FiEdit, FiTrash2 } from "react-icons/fi"
+const API_URL = import.meta.env.VITE_API_URL    
+
 
 function PanelPadrino({ usuario }) {
     const [necesidades, setNecesidades] = useState([])
@@ -11,7 +13,7 @@ function PanelPadrino({ usuario }) {
     // Cargar las necesidades del padrino
     const CargarNecesidades =() => {
         if (usuario) {
-            fetch(`http://localhost:8000/necesidades/padrino/${usuario.id}`)
+            fetch(`${API_URL}/necesidades/padrino/${usuario.id}`)
                 .then(response => response.json())
                 .then(data => setNecesidades(data))
         }
@@ -33,7 +35,7 @@ function PanelPadrino({ usuario }) {
             // Solo cargar si no las tenemos ya
             if (!donaciones[necesidadId]) {
                 try {
-                    const response = await fetch(`http://localhost:8000/donaciones/necesidad/${necesidadId}`)
+                    const response = await fetch(`${API_URL}/donaciones/necesidad/${necesidadId}`)
                     const data = await response.json()
                     setDonaciones(prev => ({ ...prev, [necesidadId]: data }))
                 } catch (error) {
@@ -70,7 +72,7 @@ const eliminarNecesidad = async (necesidadId) => {
 
     try {
         const response = await fetch(
-            `http://localhost:8000/necesidades/${necesidadId}?usuario_id=${usuario.id}`,
+            `${API_URL}/necesidades/${necesidadId}?usuario_id=${usuario.id}`,
             { method: "DELETE" }
         )
 
@@ -112,7 +114,7 @@ const cancelarEdicion = () => {
 const guardarEdicion = async (necesidadId) => {
     try {
         const response = await fetch(
-            `http://localhost:8000/necesidades/${necesidadId}?usuario_id=${usuario.id}`,
+            `${API_URL}/necesidades/${necesidadId}?usuario_id=${usuario.id}`,
             {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },

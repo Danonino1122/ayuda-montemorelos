@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import DropdownCategoria from "../components/DropdownCategoria"
 import { useState, useEffect } from "react"
 import "leaflet/dist/leaflet.css"
+const API_URL = import.meta.env.VITE_API_URL    
 
 
 function Mapa({usuario}) {
@@ -12,8 +13,8 @@ function Mapa({usuario}) {
 
     const cargarNecesidades = () => {
     const url = usuario 
-        ? `http://localhost:8000/necesidades/?usuario_id=${usuario.id}`
-        : "http://localhost:8000/necesidades/"
+        ? `${API_URL}/necesidades/?usuario_id=${usuario.id}`
+        : `${API_URL}/necesidades/`
     
     fetch(url)
         .then(response => response.json())
@@ -28,7 +29,7 @@ function Mapa({usuario}) {
     const ofrecerAyuda = async (necesidadId)=>{
         try{
             const response = await fetch(
-                `http://localhost:8000/donaciones/?donante_id=${usuario.id}`,
+                `${API_URL}/donaciones/?donante_id=${usuario.id}`,
             {
                 method:"POST",
                 headers: {"Content-Type": "application/json"},

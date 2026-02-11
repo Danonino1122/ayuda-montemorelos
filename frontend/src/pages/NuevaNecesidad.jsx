@@ -2,6 +2,8 @@ import DropdownCategoria from "../components/DropdownCategoria"
 import { useState } from "react"
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+const API_URL = import.meta.env.VITE_API_URL    
+
 
 function ClickEnMapa({ onClic }) {
     useMapEvents({
@@ -30,7 +32,7 @@ function Necesidad({usuario}) {
         }
         try {
             const response = await fetch(
-                `http://localhost:8000/necesidades/?usuario_id=${usuario.id}`,
+                `${API_URL}/necesidades/?usuario_id=${usuario.id}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+const API_URL = import.meta.env.VITE_API_URL    
+
 
 function Registro() {
     const [nombre_completo, setNombre_completo] = useState("")
@@ -12,7 +14,7 @@ function Registro() {
 
     const handleRegistro = async () => {
         try {
-            const response = await fetch("http://localhost:8000/usuarios/registro", {
+            const response = await fetch(`${API_URL}/usuarios/registro`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
