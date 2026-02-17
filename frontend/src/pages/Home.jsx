@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { FiMapPin, FiSearch, FiGift, FiHeart } from "react-icons/fi"
+const API_URL = import.meta.env.VITE_API_URL
 
 function Home() {
     const [estadisticas, setEstadisticas] = useState({
@@ -11,12 +12,12 @@ function Home() {
     // Cargar estadísticas al abrir la página
     useEffect(() => {
         // Obtener cantidad de necesidades
-        fetch("http://localhost:8000/necesidades/")
+        fetch(`${API_URL}/necesidades/`)
             .then(response => response.json())
             .then(data => setEstadisticas(prev => ({ ...prev, necesidades: data.length })))
 
         // Obtener cantidad de donaciones
-        fetch("http://localhost:8000/donaciones/")
+        fetch(`${API_URL}/donaciones/`)
             .then(response => response.json())
             .then(data => setEstadisticas(prev => ({ ...prev, donaciones: data.length })))
     }, [])

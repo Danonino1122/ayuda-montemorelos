@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from database import get_connection
+from database import get_connection, release_connection
 from models import NecesidadCreate, NecesidadResponse
 from psycopg2.extras import RealDictCursor
 
@@ -41,7 +41,7 @@ def crear_necesidad(necesidad: NecesidadCreate, usuario_id:int):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 @router.get("/")
 def obtenerNecesidades(usuario_id: int = None):
@@ -78,7 +78,7 @@ def obtenerNecesidades(usuario_id: int = None):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 # Obtener necesidades de un padrino específico
 @router.get("/padrino/{usuario_id}")
@@ -96,7 +96,7 @@ def obtener_necesidades_padrino(usuario_id: int):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 
 @router.get("/{necesidad_id}")
@@ -115,7 +115,7 @@ def obtener_necesidad(necesidad_id:int):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 # Editar una necesidad
 @router.put("/{necesidad_id}")
@@ -167,7 +167,7 @@ def editar_necesidad(necesidad_id: int, necesidad: NecesidadCreate, usuario_id: 
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 
 @router.delete("/{necesidad_id}")
@@ -202,4 +202,4 @@ def eliminarNecesidad(necesidad_id: int, usuario_id: int):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)

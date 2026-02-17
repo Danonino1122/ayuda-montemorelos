@@ -1,5 +1,6 @@
-# database.py - Conexión a PostgreSQL
+# database.py - Conexión a PostgreSQL con Connection Pool
 import psycopg2
+from psycopg2 import pool
 from psycopg2.extras import RealDictCursor
 import os
 from dotenv import load_dotenv
@@ -10,23 +11,35 @@ load_dotenv()
 # Obtener la URL de la base de datos
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+# Pool de conexiones (se crean al iniciar el servidor y se reutilizan)
+if DATABASE_URL:
+    connection_pool = pool.SimpleConnectionPool(
+        minconn=1,
+        maxconn=10,
+        dsn=DATABASE_URL
+    )
+else:
+    connection_pool = pool.SimpleConnectionPool(
+        minconn=1,
+        maxconn=10,
+        host="localhost",
+        database="ayuda_montemorelos",
+        user="postgres",
+        password="admin",
+        port="5432"
+    )
+
 def get_connection():
     """
-    Crea y retorna una conexión a la base de datos.
+    Obtiene una conexión del pool (mucho más rápido que crear una nueva).
     """
-    if DATABASE_URL:
-        # Para producción
-        connection = psycopg2.connect(DATABASE_URL)
-    else:
-        # Para desarrollo local (fallback)
-        connection = psycopg2.connect(
-            host="localhost",
-            database="ayuda_montemorelos",
-            user="postgres",
-            password="admin",
-            port="5432"
-        )
-    return connection
+    return connection_pool.getconn()
+
+def release_connection(conn):
+    """
+    Devuelve la conexión al pool para que se reutilice.
+    """
+    connection_pool.putconn(conn)
 
 
 def test_connection():
@@ -41,7 +54,7 @@ def test_connection():
         print(f"Conexión exitosa!")
         print(f"PostgreSQL version: {version[0]}")
         cursor.close()
-        conn.close()
+        release_connection(conn)
         return True
     except Exception as error:
         print(f"Error al conectar: {error}")

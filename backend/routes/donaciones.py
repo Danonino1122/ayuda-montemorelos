@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from database import get_connection
+from database import get_connection, release_connection
 from models import DonacionCreate, DonacionResponse
 from psycopg2.extras import RealDictCursor
 
@@ -40,13 +40,15 @@ def crear_donacion(donacion: DonacionCreate, donante_id:int ):
 
         return donacion
 
+    except HTTPException:
+        raise
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(e))
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 @router.get("/")
 def obtenerDonaciones():
@@ -63,7 +65,7 @@ def obtenerDonaciones():
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 # Obtener donaciones de una necesidad específica (con info del donante)
 @router.get("/necesidad/{necesidad_id}")
@@ -89,4 +91,4 @@ def obtener_donaciones_necesidad(necesidad_id: int):
 
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)

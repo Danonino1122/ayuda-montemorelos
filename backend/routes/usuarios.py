@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from database import get_connection
+from database import get_connection, release_connection
 from models import UsuarioCreate, UsuarioResponse
 from psycopg2.extras import RealDictCursor
 from security import hashear_password, verificar_password
@@ -38,7 +38,7 @@ def registrar_usuario(usuario: UsuarioCreate):
     
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
 
 
 @router.post("/login")
@@ -55,11 +55,12 @@ def login(email:str, password:str):
         
         if not verificar_password(password, usuario["password_hash"]):
             raise HTTPException(status_code=401, detail="Contraseña incorrecta")
-        else:
-            return usuario
+
+        del usuario["password_hash"]
+        return usuario
         
     finally:
         cursor.close()
-        conn.close()
+        release_connection(conn)
         
         
